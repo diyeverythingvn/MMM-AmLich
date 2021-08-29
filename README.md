@@ -6,7 +6,7 @@ Lunar Date Viet Nam
 Nguồn tham khảo: [Cách tính lịch Âm](https://www.informatik.uni-leipzig.de/~duc/amlich/)
 
 ## Screenshot
-![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/MMM-AmLich.PNG?raw=true)
+![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/SizeBig.PNG?raw=true)
 
 ## Install
 ```sh
@@ -38,7 +38,7 @@ nano ~/MagicMirror/config/config.js
 	}
 },
 ```
-![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/MMM-AmLich.PNG?raw=true)
+![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/SizeBig.PNG?raw=true)
 
 <b>Kích thước: Trung bình</b>
 
@@ -51,7 +51,7 @@ nano ~/MagicMirror/config/config.js
 	}
 },
 ```
-![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/MMM-AmLich.PNG?raw=true)
+![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/SizeMedium.PNG?raw=true)
 
 <b>Kích thước: Nhỏ</b>
 
@@ -64,4 +64,4 @@ nano ~/MagicMirror/config/config.js
 	}
 },
 ```
-![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/MMM-AmLich.PNG?raw=true)
+![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/MMM-SizeSmall.PNG?raw=true)
