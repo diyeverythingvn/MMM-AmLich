@@ -19,9 +19,9 @@ Module.register("MMM-AmLich",{
 		var wrapper = document.createElement("div");
         if (this.config.size == 'big' || this.config.size == '') {
             wrapper.innerHTML = printToday();
-        } else if (this.size.print == 'medium') {
+        } else if (this.config.size == 'medium') {
             wrapper.innerHTML = printTodayMedium();
-        } else if (this.size.print == 'small') {
+        } else if (this.config.size == 'small') {
             wrapper.innerHTML = printTodaySmall();
         }
 		return wrapper;
