@@ -11,7 +11,7 @@ Nguồn tham khảo: [Cách tính lịch Âm](https://www.informatik.uni-leipzig
 ## Install
 ```sh
 cd ~/MagicMirror/modules
-git clone https://github.com/iThingscc/MMM-AmLich
+git clone https://github.com/diyeverythingvn/MMM-AmLich
 ```
 
 ## Configuration
