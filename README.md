@@ -27,4 +27,41 @@ nano ~/MagicMirror/config/config.js
 	}
 },
 ```
+Kích thước: Lớn
 
+```js
+{
+	module: "MMM-AmLich",
+	position: "top_left",
+	config: {
+		size: 'big'
+	}
+},
+```
+![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/MMM-AmLich.PNG?raw=true)
+
+Kích thước: Trung bình
+
+```js
+{
+	module: "MMM-AmLich",
+	position: "top_left",
+	config: {
+		size: 'medium'
+	}
+},
+```
+![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/MMM-AmLich.PNG?raw=true)
+
+Kích thước: Nhỏ
+
+```js
+{
+	module: "MMM-AmLich",
+	position: "top_left",
+	config: {
+		size: 'small'
+	}
+},
+```
+![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/MMM-AmLich.PNG?raw=true)
