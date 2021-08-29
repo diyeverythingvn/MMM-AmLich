@@ -27,7 +27,7 @@ nano ~/MagicMirror/config/config.js
 	}
 },
 ```
-Kích thước: Lớn
+<b>Kích thước: Lớn</b>
 
 ```js
 {
