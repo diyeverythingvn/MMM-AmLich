@@ -64,4 +64,4 @@ nano ~/MagicMirror/config/config.js
 	}
 },
 ```
-![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/MMM-SizeSmall.PNG?raw=true)
+![Screenshot](https://github.com/diyeverythingvn/MMM-AmLich/blob/main/SizeSmall.PNG?raw=true)
