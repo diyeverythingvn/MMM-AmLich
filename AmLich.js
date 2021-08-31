@@ -239,218 +239,6 @@ function alertInfo(jd) {
 	//alert(hoangdao);
 }
 
-function printDate(lunarDate, solarDay, solarMonth, solarYear) {
-	var today = new Date();
-	var yy = lunarDate.year;
-	var mm = lunarDate.month;
-	var dd = lunarDate.day;
-	var jd = lunarDate.jd;
-	var Std = today.getHours();
-	var Min = today.getMinutes();
-	var Sec = today.getSeconds();
-	var s1  = ((Std < 10) ? "0" + Std : Std);
-	var s2  = ((Min < 10) ? "0" + Min : Min);
-	var s3  = ((Sec < 10) ? "0" + Sec : Sec);
-	var now = s1 + ":" + s2 + ":" + s3;
-	var dayOfWeek = TUAN[(jd + 1) % 7];
-	var nhuan = (lunarDate.leap == 1) ? ' nhuận' : '';
-	var thangAm = THANG[mm-1]+nhuan+(lunarDate.length == 30 ? ' (Đ)' : ' (T)');
-	var thang = CAN[(yy*12+mm+3) % 10] + " " + CHI[(mm+1)%12];
-	var ngay = CAN[(jd + 9) % 10] + " " + CHI[(jd+1)%12];
-	var chiGio = (Std >= 23) ? 0 : INT((Std + 1) / 2);
-	var canGio = ((jd-1)*2 + INT((Std + 1) / 2)) % 10;
-	var gioAmLich = CAN[canGio] + " " + CHI[chiGio];
-	var ret = '';
-	//var info = getDayInfo(dd, mm);
-    
-	ret += '<table class="ngay" align="center" width="100%" border="0" cellpadding="1" cellspacing="1">\n';
-	ret += '<tr>\n';
-	ret += '<td id="gio" class="ngaythangduong">'+now+'</td>\n';
-	ret += '<td id="thuduong" class="ngaythangduong">'+dayOfWeek+'</td>\n';
-	ret += '</tr>\n';
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="ngaythangduong" class="ngayduong">'+solarDay+'/'+solarMonth+'/'+solarYear+'</td>\n';
-	ret += '</tr>\n';
-	
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="dayinfo" class="info">'+getDayInfo(dd, mm)+'</td>\n';
-	ret += '</tr>\n';
-	
-	ret += '<tr>\n';
-	ret += '<td>\n';
-	ret += '<div id="thangam" class="thangnamam">Tháng '+thangAm+'</div>\n';
-	ret += '<div id="ngayam" class="ngayam">'+dd+'</div>\n';
-	ret += '<div id="namam" class="thangnamam">Năm '+getYearCanChi(yy)+'</div>\n';
-	ret += '</td>\n';
-	ret += '<td>\n';
-	ret += '<div id="canchithang" class="gioam">Tháng '+thang+'</div>\n';
-	ret += '<div id="canchingay" class="gioam">Ngày '+ngay+'</div>\n';
-	ret += '<div id="canchigio" class="gioam">Giờ '+gioAmLich+'</div>\n';
-	ret += '<div id="tietkhi" class="gioam">Tiết '+TIETKHI[getSolarTerm(jd+1, 7.0)]+'</div>\n';
-	ret += '</td>\n';
-	ret += '</tr>\n';
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="hoangdao" class="hoangdao">Giờ hoàng đạo:</td>\n';
-	ret += '</tr>\n';
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="hoangdao" class="hoangdao">'+getGioHoangDao(jd)+'</td>\n';
-	ret += '</tr>\n';
-	ret += '</table>\n';
-	return ret;
-}
-
-function printDateMedium(lunarDate, solarDay, solarMonth, solarYear) {
-	var today = new Date();
-	var yy = lunarDate.year;
-	var mm = lunarDate.month;
-	var dd = lunarDate.day;
-	var jd = lunarDate.jd;
-	var Std = today.getHours();
-	var Min = today.getMinutes();
-	var Sec = today.getSeconds();
-	var s1  = ((Std < 10) ? "0" + Std : Std);
-	var s2  = ((Min < 10) ? "0" + Min : Min);
-	var s3  = ((Sec < 10) ? "0" + Sec : Sec);
-	var now = s1 + ":" + s2 + ":" + s3;
-	var dayOfWeek = TUAN[(jd + 1) % 7];
-	var nhuan = (lunarDate.leap == 1) ? ' nhuận' : '';
-	var thangAm = THANG[mm-1]+nhuan+(lunarDate.length == 30 ? ' (Đ)' : ' (T)');
-	var thang = CAN[(yy*12+mm+3) % 10] + " " + CHI[(mm+1)%12];
-	var ngay = CAN[(jd + 9) % 10] + " " + CHI[(jd+1)%12];
-	var chiGio = (Std >= 23) ? 0 : INT((Std + 1) / 2);
-	var canGio = ((jd-1)*2 + INT((Std + 1) / 2)) % 10;
-	var gioAmLich = CAN[canGio] + " " + CHI[chiGio];
-	var ret = '';
-	//var info = getDayInfo(dd, mm);
-    
-	ret += '<table class="ngay" align="center" width="100%" border="0" cellpadding="1" cellspacing="1">\n';
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="ngaythangduong" class="ngayduong">'+solarDay+'/'+solarMonth+'/'+solarYear+'</td>\n';
-	ret += '</tr>\n';
-	
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="dayinfo" class="info">'+getDayInfo(dd, mm)+'</td>\n';
-	ret += '</tr>\n';
-	
-	ret += '<tr>\n';
-	ret += '<td>\n';
-	ret += '<div id="thangam" class="thangnamam">Tháng '+thangAm+'</div>\n';
-	ret += '<div id="ngayam" class="ngayam">'+dd+'</div>\n';
-	ret += '<div id="namam" class="thangnamam">Năm '+getYearCanChi(yy)+'</div>\n';
-	ret += '</td>\n';
-	ret += '<td>\n';
-	ret += '<div id="canchithang" class="gioam">Tháng '+thang+'</div>\n';
-	ret += '<div id="canchingay" class="gioam">Ngày '+ngay+'</div>\n';
-	ret += '<div id="canchigio" class="gioam">Giờ '+gioAmLich+'</div>\n';
-	ret += '<div id="tietkhi" class="gioam">Tiết '+TIETKHI[getSolarTerm(jd+1, 7.0)]+'</div>\n';
-	ret += '</td>\n';
-	ret += '</tr>\n';
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="hoangdao" class="hoangdao">Giờ hoàng đạo:</td>\n';
-	ret += '</tr>\n';
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="hoangdao" class="hoangdao">'+getGioHoangDao(jd)+'</td>\n';
-	ret += '</tr>\n';
-	ret += '</table>\n';
-	return ret;
-}
-
-function printDateSmall(lunarDate, solarDay, solarMonth, solarYear) {
-	var today = new Date();
-	var yy = lunarDate.year;
-	var mm = lunarDate.month;
-	var dd = lunarDate.day;
-	var jd = lunarDate.jd;
-	var Std = today.getHours();
-	var Min = today.getMinutes();
-	var Sec = today.getSeconds();
-	var s1  = ((Std < 10) ? "0" + Std : Std);
-	var s2  = ((Min < 10) ? "0" + Min : Min);
-	var s3  = ((Sec < 10) ? "0" + Sec : Sec);
-	var now = s1 + ":" + s2 + ":" + s3;
-	var dayOfWeek = TUAN[(jd + 1) % 7];
-	var nhuan = (lunarDate.leap == 1) ? ' nhuận' : '';
-	var thangAm = THANG[mm-1]+nhuan+(lunarDate.length == 30 ? ' (Đ)' : ' (T)');
-	var thang = CAN[(yy*12+mm+3) % 10] + " " + CHI[(mm+1)%12];
-	var ngay = CAN[(jd + 9) % 10] + " " + CHI[(jd+1)%12];
-	var chiGio = (Std >= 23) ? 0 : INT((Std + 1) / 2);
-	var canGio = ((jd-1)*2 + INT((Std + 1) / 2)) % 10;
-	var gioAmLich = CAN[canGio] + " " + CHI[chiGio];
-	var ret = '';
-	//var info = getDayInfo(dd, mm);
-    
-	ret += '<table class="ngay" align="center" width="100%" border="0" cellpadding="1" cellspacing="1">\n';
-	
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="dayinfo" class="info">'+getDayInfo(dd, mm)+'</td>\n';
-	ret += '</tr>\n';
-	
-	ret += '<tr>\n';
-	ret += '<td>\n';
-	ret += '<div id="thangam" class="thangnamam">Tháng '+thangAm+'</div>\n';
-	ret += '<div id="ngayam" class="ngayam">'+dd+'</div>\n';
-	ret += '<div id="namam" class="thangnamam">Năm '+getYearCanChi(yy)+'</div>\n';
-	ret += '</td>\n';
-	ret += '<td>\n';
-	ret += '<div id="canchithang" class="gioam">Tháng '+thang+'</div>\n';
-	ret += '<div id="canchingay" class="gioam">Ngày '+ngay+'</div>\n';
-	ret += '<div id="canchigio" class="gioam">Giờ '+gioAmLich+'</div>\n';
-	ret += '<div id="tietkhi" class="gioam">Tiết '+TIETKHI[getSolarTerm(jd+1, 7.0)]+'</div>\n';
-	ret += '</td>\n';
-	ret += '</tr>\n';
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="hoangdao" class="hoangdao">Giờ hoàng đạo:</td>\n';
-	ret += '</tr>\n';
-	ret += '<tr>\n';
-	ret += '<td colspan="2" id="hoangdao" class="hoangdao">'+getGioHoangDao(jd)+'</td>\n';
-	ret += '</tr>\n';
-	ret += '</table>\n';
-	return ret;
-}
-
-function printToday() {
-	var today = new Date();
-	var currentLunarDate = getLunarDate(today.getDate(), today.getMonth()+1, today.getFullYear());
-	var currentDate = today.getDate();
-	var currentMonth = today.getMonth()+1;
-	var currentYear = today.getFullYear();
-    window.setInterval("updateDateTime()",1000);
-	return printDate(currentLunarDate, currentDate, currentMonth, currentYear);
-}
-
-function printTodayMedium() {
-	var today = new Date();
-	var currentLunarDate = getLunarDate(today.getDate(), today.getMonth()+1, today.getFullYear());
-	var currentDate = today.getDate();
-	var currentMonth = today.getMonth()+1;
-	var currentYear = today.getFullYear();
-    window.setInterval("updateDateTime()",1000);
-	return printDateMedium(currentLunarDate, currentDate, currentMonth, currentYear);
-}
-
-function printTodaySmall() {
-	var today = new Date();
-	var currentLunarDate = getLunarDate(today.getDate(), today.getMonth()+1, today.getFullYear());
-	var currentDate = today.getDate();
-	var currentMonth = today.getMonth()+1;
-	var currentYear = today.getFullYear();
-    window.setInterval("updateDateTime()",1000);
-	return printDateSmall(currentLunarDate, currentDate, currentMonth, currentYear);
-}
-
-
-function getCurrentTime() {
-	var today = new Date();
-	var Std = today.getHours();
-	var Min = today.getMinutes();
-	var Sec = today.getSeconds();
-	var s1  = ((Std < 10) ? "0" + Std : Std);
-	var s2  = ((Min < 10) ? "0" + Min : Min);
-	var s3  = ((Sec < 10) ? "0" + Sec : Sec);
-	var now = s1 + ":" + s2 + ":" + s3;
-	return s1 + ":" + s2 + ":" + s3;
-}
-
 function updateDateTime() {
 	var today = new Date();
 	var currentDate = today.getDate();
@@ -487,6 +275,196 @@ function updateDateTime() {
 	document.getElementById("canchingay").innerHTML = 'Ngày '+ngay;
 	document.getElementById("canchigio").innerHTML = 'Giờ '+CAN[canGio]+' '+CHI[chiGio];
 	document.getElementById("tietkhi").innerHTML = 'Tiết '+TIETKHI[getSolarTerm(jd+1, 7.0)];
+    document.getElementById("giohoangdao").innerHTML = getGioHoangDao(jd);
 }
 
+function updateDateTimeMedium() {
+	var today = new Date();
+	var currentDate = today.getDate();
+	var currentMonth = today.getMonth()+1;
+	var currentYear = today.getFullYear();
+	var lunarDate = getLunarDate(currentDate, currentMonth, currentYear);
+	var yy = lunarDate.year;
+	var mm = lunarDate.month;
+	var dd = lunarDate.day;
+	var jd = lunarDate.jd;
+	var Std = today.getHours();
+	var Min = today.getMinutes();
+	var Sec = today.getSeconds();
+	var s1  = ((Std < 10) ? "0" + Std : Std);
+	var s2  = ((Min < 10) ? "0" + Min : Min);
+	var s3  = ((Sec < 10) ? "0" + Sec : Sec);
+	var now = s1 + ":" + s2 + ":" + s3;
+	var chiGio = (Std >= 23) ? 0 : INT((Std + 1) / 2);
+	var canGio = ((jd-1)*2 + INT((Std + 1) / 2)) % 10;
+	var dayOfWeek = TUAN[(jd + 1) % 7];
+	var nhuan = (lunarDate.leap == 1) ? ' nhuận' : '';
+	var thangAm = 'Tháng '+THANG[mm-1]+nhuan+(lunarDate.length == 30 ? ' (Đ)' : ' (T)');
+	var thang = CAN[(yy*12+mm+3) % 10] + " " + CHI[(mm+1)%12];
+	var ngay = CAN[(jd + 9) % 10] + " " + CHI[(jd+1)%12];
+	var info = getDayInfo(dd, mm);
+  	document.getElementById("ngayduongmedium").innerHTML = currentDate+'/'+currentMonth+'/'+currentYear;
+  	document.getElementById("dayinfomedium").innerHTML = info;
+	document.getElementById("thangammedium").innerHTML = thangAm;
+	document.getElementById("ngayammedium").innerHTML = dd;
+	document.getElementById("namammedium").innerHTML = 'Năm '+getYearCanChi(yy);
+	document.getElementById("canchithangmedium").innerHTML = 'Tháng '+thang;
+	document.getElementById("canchingaymedium").innerHTML = 'Ngày '+ngay;
+	document.getElementById("canchigiomedium").innerHTML = 'Giờ '+CAN[canGio]+' '+CHI[chiGio];
+	document.getElementById("tietkhimedium").innerHTML = 'Tiết '+TIETKHI[getSolarTerm(jd+1, 7.0)];
+    document.getElementById("giohoangdaomedium").innerHTML = getGioHoangDao(jd);
+}
 
+function updateDateTimeSmall() {
+	var today = new Date();
+	var currentDate = today.getDate();
+	var currentMonth = today.getMonth()+1;
+	var currentYear = today.getFullYear();
+	var lunarDate = getLunarDate(currentDate, currentMonth, currentYear);
+	var yy = lunarDate.year;
+	var mm = lunarDate.month;
+	var dd = lunarDate.day;
+	var jd = lunarDate.jd;
+	var Std = today.getHours();
+	var Min = today.getMinutes();
+	var Sec = today.getSeconds();
+	var s1  = ((Std < 10) ? "0" + Std : Std);
+	var s2  = ((Min < 10) ? "0" + Min : Min);
+	var s3  = ((Sec < 10) ? "0" + Sec : Sec);
+	var now = s1 + ":" + s2 + ":" + s3;
+	var chiGio = (Std >= 23) ? 0 : INT((Std + 1) / 2);
+	var canGio = ((jd-1)*2 + INT((Std + 1) / 2)) % 10;
+	var dayOfWeek = TUAN[(jd + 1) % 7];
+	var nhuan = (lunarDate.leap == 1) ? ' nhuận' : '';
+	var thangAm = 'Tháng '+THANG[mm-1]+nhuan+(lunarDate.length == 30 ? ' (Đ)' : ' (T)');
+	var thang = CAN[(yy*12+mm+3) % 10] + " " + CHI[(mm+1)%12];
+	var ngay = CAN[(jd + 9) % 10] + " " + CHI[(jd+1)%12];
+	var info = getDayInfo(dd, mm);
+  	document.getElementById("dayinfosmall").innerHTML = info;
+	document.getElementById("thangamsmall").innerHTML = thangAm;
+	document.getElementById("ngayamsmall").innerHTML = dd;
+	document.getElementById("namamsmall").innerHTML = 'Năm '+getYearCanChi(yy);
+	document.getElementById("canchithangsmall").innerHTML = 'Tháng '+thang;
+	document.getElementById("canchingaysmall").innerHTML = 'Ngày '+ngay;
+	document.getElementById("canchigiosmall").innerHTML = 'Giờ '+CAN[canGio]+' '+CHI[chiGio];
+	document.getElementById("tietkhismall").innerHTML = 'Tiết '+TIETKHI[getSolarTerm(jd+1, 7.0)];
+    document.getElementById("giohoangdaosmall").innerHTML = getGioHoangDao(jd);
+}
+
+function printTable() {
+    var ret = '';
+	ret += '<table class="ngay" align="center" width="100%" border="0" cellpadding="1" cellspacing="1">\n';
+	ret += '<tr>\n';
+	ret += '<td id="gio" class="ngaythangduong"></td>\n';
+	ret += '<td id="thu" class="ngaythangduong"></td>\n';
+	ret += '</tr>\n';
+	ret += '<tr>\n';
+	ret += '<td colspan="2" id="ngayduong" class="ngayduong"></td>\n';
+	ret += '</tr>\n';
+	
+	ret += '<tr>\n';
+	ret += '<td colspan="2" id="dayinfo" class="info"></td>\n';
+	ret += '</tr>\n';
+	
+	ret += '<tr>\n';
+	ret += '<td>\n';
+	ret += '<div id="thangam" class="thangnamam"></div>\n';
+	ret += '<div id="ngayam" class="ngayam"></div>\n';
+	ret += '<div id="namam" class="thangnamam"></div>\n';
+	ret += '</td>\n';
+	ret += '<td class="canchi">\n';
+	ret += '<div id="canchithang" class="gioam"></div>\n';
+	ret += '<div id="canchingay" class="gioam"></div>\n';
+	ret += '<div id="canchigio" class="gioam"></div>\n';
+	ret += '<div id="tietkhi" class="gioam"></div>\n';
+	ret += '</td>\n';
+	ret += '</tr>\n';
+	ret += '<tr>\n';
+	ret += '<td colspan="2" class="hoangdao">Giờ hoàng đạo:</td>\n';
+	ret += '</tr>\n';
+	ret += '<tr>\n';
+	ret += '<td colspan="2" id="giohoangdao" class="hoangdao"></td>\n';
+	ret += '</tr>\n';
+	ret += '</table>\n';
+	return ret;
+}
+
+function printTableMedium() {
+    var ret = '';
+	ret += '<table class="ngay" align="center" width="100%" border="0" cellpadding="1" cellspacing="1">\n';
+	ret += '<tr>\n';
+	ret += '<td colspan="2" id="ngayduongmedium" class="ngayduong"></td>\n';
+	ret += '</tr>\n';
+	
+	ret += '<tr>\n';
+	ret += '<td colspan="2" id="dayinfomedium" class="info"></td>\n';
+	ret += '</tr>\n';
+	
+	ret += '<tr>\n';
+	ret += '<td>\n';
+	ret += '<div id="thangammedium" class="thangnamam"></div>\n';
+	ret += '<div id="ngayammedium" class="ngayam"></div>\n';
+	ret += '<div id="namammedium" class="thangnamam"></div>\n';
+	ret += '</td>\n';
+	ret += '<td class="canchi">\n';
+	ret += '<div id="canchithangmedium" class="gioam"></div>\n';
+	ret += '<div id="canchingaymedium" class="gioam"></div>\n';
+	ret += '<div id="canchigiomedium" class="gioam"></div>\n';
+	ret += '<div id="tietkhimedium" class="gioam"></div>\n';
+	ret += '</td>\n';
+	ret += '</tr>\n';
+	ret += '<tr>\n';
+	ret += '<td colspan="2" class="hoangdao">Giờ hoàng đạo:</td>\n';
+	ret += '</tr>\n';
+	ret += '<tr>\n';
+	ret += '<td colspan="2" id="giohoangdaomedium" class="hoangdao"></td>\n';
+	ret += '</tr>\n';
+	ret += '</table>\n';
+	return ret;
+}
+
+function printTableSmall() {
+    var ret = '';
+	ret += '<table class="ngay" align="center" width="100%" border="0" cellpadding="1" cellspacing="1">\n';
+	
+	ret += '<tr>\n';
+	ret += '<td colspan="2" id="dayinfosmall" class="info"></td>\n';
+	ret += '</tr>\n';
+	
+	ret += '<tr>\n';
+	ret += '<td>\n';
+	ret += '<div id="thangamsmall" class="thangnamam"></div>\n';
+	ret += '<div id="ngayamsmall" class="ngayam"></div>\n';
+	ret += '<div id="namamsmall" class="thangnamam"></div>\n';
+	ret += '</td>\n';
+	ret += '<td class="canchi">\n';
+	ret += '<div id="canchithangsmall" class="gioam"></div>\n';
+	ret += '<div id="canchingaysmall" class="gioam"></div>\n';
+	ret += '<div id="canchigiosmall" class="gioam"></div>\n';
+	ret += '<div id="tietkhismall" class="gioam"></div>\n';
+	ret += '</td>\n';
+	ret += '</tr>\n';
+	ret += '<tr>\n';
+	ret += '<td colspan="2" class="hoangdao">Giờ hoàng đạo:</td>\n';
+	ret += '</tr>\n';
+	ret += '<tr>\n';
+	ret += '<td colspan="2" id="giohoangdaosmall" class="hoangdao"></td>\n';
+	ret += '</tr>\n';
+	ret += '</table>\n';
+	return ret;
+}
+
+function printData() {
+    window.setInterval("updateDateTime()",1000);
+    return printTable();
+}
+
+function printDataMedium() {
+    window.setInterval("updateDateTimeMedium()",2000);
+    return printTableMedium();
+}
+
+function printDataSmall() {
+    window.setInterval("updateDateTimeSmall()",2000);
+    return printTableSmall();
+}
