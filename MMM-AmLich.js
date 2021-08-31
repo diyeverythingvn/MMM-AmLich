@@ -18,11 +18,11 @@ Module.register("MMM-AmLich",{
 	getDom: function() {
 		var wrapper = document.createElement("div");
         if (this.config.size == 'big' || this.config.size == '') {
-            wrapper.innerHTML = printToday();
+            wrapper.innerHTML = printData();
         } else if (this.config.size == 'medium') {
-            wrapper.innerHTML = printTodayMedium();
+            wrapper.innerHTML = printDataMedium();
         } else if (this.config.size == 'small') {
-            wrapper.innerHTML = printTodaySmall();
+            wrapper.innerHTML = printDataSmall();
         }
 		return wrapper;
 	}
