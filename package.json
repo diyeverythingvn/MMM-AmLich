@@ -1,0 +1,24 @@
+{
+  "name": "mmm-amlich",
+  "version": "1.0.0",
+  "description": "A MagicMirror² module for displaying today's Lunar date - Vietnamese Language (Âm lịch)",
+  "main": "MMM-AmLich.js",
+  "type": "commonjs",
+  "repository": "https://github.com/diyeverythingvn/MMM-AmLich",
+  "keywords": [
+    "magicmirror",
+    "magic mirror",
+    "module",
+    "lunar date",
+    "am lich",
+    "viet nam",
+    "vietnamese"
+  ],
+  "author": "CuongNV - DIY Everything VN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diyeverythingvn/MMM-AmLich"
+  },
+  "dependencies": {
+  }
+}
