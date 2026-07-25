@@ -6,11 +6,12 @@
   "type": "commonjs",
   "repository": "https://github.com/diyeverythingvn/MMM-AmLich",
   "keywords": [
+    "am lich",
+    "Calendar",
     "magicmirror",
     "magic mirror",
     "module",
     "lunar date",
-    "am lich",
     "viet nam",
     "vietnamese"
   ],
